@@ -72,8 +72,13 @@ class _LoginSignupModalState extends State<LoginSignupModal> {
                     fontWeight: FontWeight.w500,
                     color: Color.fromRGBO(16, 24, 40, .34),
                   ),
-                  prefixIcon: const SizedBox.square(
-                      dimension: 24, child: Icon(Icons.mail)),
+                  prefixIcon: SizedBox.square(
+                    dimension: 24,
+                    child: SvgPicture.asset(
+                      'assets/icons/mail.svg',
+                      fit: BoxFit.scaleDown,
+                    ),
+                  ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: const BorderSide(color: Colors.transparent),
@@ -117,11 +122,16 @@ class _LoginSignupModalState extends State<LoginSignupModal> {
                 ),
                 // side: const ,
               ),
-              const Text(
-                'Remember me',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: Color.fromARGB(255, 133, 144, 168),
+              GestureDetector(
+                onTap: () => setState(() {
+                  _rememberMe = !_rememberMe;
+                }),
+                child: const Text(
+                  'Remember me',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Color.fromARGB(255, 133, 144, 168),
+                  ),
                 ),
               )
             ],
@@ -151,6 +161,15 @@ class _LoginSignupModalState extends State<LoginSignupModal> {
                       setState(() => _isAuthenticating = true);
                       await Future.delayed(const Duration(seconds: 2));
                       setState(() => _isAuthenticating = false);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Row(
+                            children: [
+                              Text('Login Successful'),
+                            ],
+                          ),
+                        ),
+                      );
                     },
               child: Stack(
                 alignment: Alignment.center,

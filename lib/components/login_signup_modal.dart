@@ -101,7 +101,8 @@ class _LoginSignupModalState extends State<LoginSignupModal> {
             children: [
               Checkbox(
                 value: _rememberMe,
-                onChanged: (value) => _rememberMe = value ?? false,
+                onChanged: (value) =>
+                    setState(() => _rememberMe = value ?? false),
                 activeColor: const Color.fromARGB(255, 230, 231, 238),
                 checkColor: Colors.black,
 

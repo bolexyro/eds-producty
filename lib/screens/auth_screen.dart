@@ -20,15 +20,23 @@ class AuthScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
-                      height: 44, 
-                      width: 44,
-                      decoration: const ShapeDecoration(
-                        shape: CircleBorder(),
-                        color: Colors.white,
+                    GestureDetector(
+                      onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Feature not yet available'),
+                        ),
                       ),
-                      child: Center(
-                        child: SvgPicture.asset('assets/icons/headphones.svg'),
+                      child: Container(
+                        height: 44,
+                        width: 44,
+                        decoration: const ShapeDecoration(
+                          shape: CircleBorder(),
+                          color: Colors.white,
+                        ),
+                        child: Center(
+                          child:
+                              SvgPicture.asset('assets/icons/headphones.svg'),
+                        ),
                       ),
                     ),
                   ],

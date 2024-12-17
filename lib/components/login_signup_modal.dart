@@ -163,11 +163,7 @@ class _LoginSignupModalState extends State<LoginSignupModal> {
                       setState(() => _isAuthenticating = false);
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Row(
-                            children: [
-                              Text('Login Successful'),
-                            ],
-                          ),
+                          content: Text('Login Successful'),
                         ),
                       );
                     },
